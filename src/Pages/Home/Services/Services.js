@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 const Services = () => {
-    return (
-        <div>
-            <h2>
-                hellow
-            </h2>
-        </div>
-    );
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("services.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
+  return (
+    <div>
+      <h2>Services: {services.length}</h2>
+    </div>
+  );
 };
 
 export default Services;
